@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>User Counter</title>
+        <title>Watch it</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='Home_static/css/style.css') }}">
     </head>
     <body>
@@ -92,6 +92,13 @@
             }
 
         </script>
+
+        <center>
+            <p style="color: white;">
+                This website saves your platform, browser name, IP and country.<br/>
+                You are using {{ browser }} on {{ platform }} from {{ country }}( {{ ip }} ).
+            </p>
+        </center>
 
     </body>
 </html>
