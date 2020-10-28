@@ -1,0 +1,4 @@
+MYSQL_HOST = "Your mysql server IP"
+MYSQL_USER = "Your mysql username"
+MYSQL_PASSWORD = "Your mysql password"
+DB_NAME = "Watch_it"
