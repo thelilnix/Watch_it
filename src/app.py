@@ -80,5 +80,10 @@ def error_404(err):
     return render_template("Error_template/404.html"), 404
 
 
+@app.errorhandler(403)
+def error_403(err):
+    return render_template("Error_template/403.html"), 403
+
+
 if __name__ == "__main__":
     app.run("0.0.0.0", 5000, debug=False)
