@@ -1,2 +1,2 @@
-src/Admin/static/* linguist-vendored
-src/Admin/templates/* linguist-vendored
+src/static/* linguist-vendored
+src/templates/* linguist-vendored
