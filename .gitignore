@@ -133,4 +133,4 @@ dmypy.json
 .vscode/
 
 # Custom
-db.py
+db_config.py
