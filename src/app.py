@@ -75,5 +75,10 @@ def home():
     )
 
 
+@app.errorhandler(404)
+def error_404(err):
+    return render_template("Error_template/404.html"), 404
+
+
 if __name__ == "__main__":
     app.run("0.0.0.0", 5000, debug=False)
