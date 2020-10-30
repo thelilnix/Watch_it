@@ -145,5 +145,10 @@ def error_403(err):
     return render_template("Error_template/403.html"), 403
 
 
+@app.errorhandler(429)
+def error_429(err):
+    return render_template("Error_template/429.html"), 429
+
+
 if __name__ == "__main__":
     app.run("0.0.0.0", 5000, debug=False)
