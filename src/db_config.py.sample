@@ -2,3 +2,7 @@ MYSQL_HOST = "Your mysql server IP"
 MYSQL_USER = "Your mysql username"
 MYSQL_PASSWORD = "Your mysql password"
 DB_NAME = "Watch_it"
+
+# Admin panel
+PANEL_USERNAME = "Your admin username"
+PANEL_PASSWORD = "Your admin password"
