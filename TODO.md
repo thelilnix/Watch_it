@@ -4,3 +4,4 @@
 - [ ] Pylint
 - [ ] MVC
 - [ ] Complete `README.md`
+- [ ] Write test for the app
