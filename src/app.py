@@ -100,7 +100,7 @@ def home():
         platform=user_platform,
         browser=user_browser,
         ip=user_ip,
-        country=user_country
+        country=user_country,
     )
 
 
@@ -132,7 +132,33 @@ def admin_login():
 
 @app.route('/dashboard')
 def dashboard():
-    return "DASHBOARD"
+    if session.get("username", '') == PANEL_USERNAME:
+        # The client logged in
+
+        total_users_count = User.query.count()
+
+        firefox_users_count = User.query.filter_by(browser='firefox').count()
+        chrome_users_count = User.query.filter_by(browser='chrome').count()
+        opera_users_count = User.query.filter_by(browser='opera').count()
+        other_users_count = User.query.filter(
+            ~User.browser.in_(['firefox', 'chrome', 'opera'])
+        ).count()
+
+        latest_users = User.query.order_by(-User.id).limit(5).all()
+
+        return render_template(
+            "Dashboard/index.html",
+            username=session["username"],
+            total=total_users_count,
+            firefox=firefox_users_count,
+            chrome=chrome_users_count,
+            opera=opera_users_count,
+            other=other_users_count,
+            latest_users=latest_users,
+        )
+    else:
+        # Redirect to login page
+        return redirect(url_for("admin_login"))
 
 
 @app.errorhandler(404)
