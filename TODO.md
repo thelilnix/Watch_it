@@ -1,0 +1,6 @@
+- [ ] Fix world map
+- [ ] Logout
+- [ ] Hash PANEL_PASSWORD (and PANEL_USERNAME) (sha256). (Line 123 app.py)
+- [ ] Pylint
+- [ ] MVC
+- [ ] Complete `README.md`
