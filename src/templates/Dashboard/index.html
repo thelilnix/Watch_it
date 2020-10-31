@@ -71,12 +71,12 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"><span >Hizrian</span></span> </a>
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"><span >{{ username }}</span></span> </a>
 							<ul class="dropdown-menu dropdown-user">
 								<li>
 									<div class="user-box">
 										<div class="u-text">
-											<h4>Hizrian</h4>
+											<h4>{{ username }}</h4>
 										</div>
 									</li>
 									<div class="dropdown-divider"></div>
@@ -94,7 +94,7 @@
 						<div class="info">
 							<a class="" data-toggle="collapse" aria-expanded="true">
 								<span>
-									<span class="user-level">Hizrian</span>
+									<span class="user-level">{{ username }}</span>
 								</span>
 							</a>
 							<div class="clearfix"></div>
@@ -127,7 +127,7 @@
 											<div class="col-7 d-flex align-items-center">
 												<div class="numbers">
 													<p class="card-category">Total</p>
-													<h4 class="card-title">000</h4>
+													<h4 class="card-title">{{ total }}</h4>
 												</div>
 											</div>
 										</div>
@@ -143,7 +143,7 @@
 											<div class="col-7 d-flex align-items-center">
 												<div class="numbers">
 													<p class="card-category">Firefox</p>
-													<h4 class="card-title">000000</h4>
+													<h4 class="card-title">{{ firefox }}</h4>
 												</div>
 											</div>
 										</div>
@@ -157,7 +157,7 @@
 											<div class="col-7 d-flex align-items-center">
 												<div class="numbers">
 													<p class="card-category">Chrome</p>
-													<h4 class="card-title">000000</h4>
+													<h4 class="card-title">{{ chrome }}</h4>
 												</div>
 											</div>
 										</div>
@@ -171,7 +171,7 @@
 											<div class="col-7 d-flex align-items-center">
 												<div class="numbers">
 													<p class="card-category">Opera</p>
-													<h4 class="card-title">00000</h4>
+													<h4 class="card-title">{{ opera }}</h4>
 												</div>
 											</div>
 										</div>
@@ -185,7 +185,7 @@
 											<div class="col-7 d-flex align-items-center">
 												<div class="numbers">
 													<p class="card-category">Other</p>
-													<h4 class="card-title">0000000</h4>
+													<h4 class="card-title">{{ other }}</h4>
 												</div>
 											</div>
 										</div>
@@ -289,7 +289,7 @@
 							<div class="col-md-5">
 								<div class="card">
 									<div class="card-header ">
-										<h4 class="card-title">Latest clients</h4>
+										<h4 class="card-title">Latest users</h4>
 									</div>
 									<div class="card-body">
 										<table class="table table-head-bg-success table-striped table-hover">
@@ -302,36 +302,14 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>1</td>
-													<td>1.1.1.1.1</td>
-													<td>Linux</td>
-													<td>Firefox</td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td>2.2.2.2</td>
-													<td>Linux</td>
-													<td>Firefox</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>3.3.3.3</td>
-													<td>Linux</td>
-													<td>Firefox</td>
-												</tr>
-												<tr>
-													<td>4</td>
-													<td>4.4.4.4</td>
-													<td>Linux</td>
-													<td>Firefox</td>
-												</tr>
-												<tr>
-													<td>5</td>
-													<td>5.5.5.5</td>
-													<td>Linux</td>
-													<td>Firefox</td>
-												</tr>
+												{% for user in latest_users %}
+													<tr>
+														<td>{{ user.id }}</td>
+														<td>{{ user.ip }}</td>
+														<td>{{ user.platform }}</td>
+														<td>{{ user.browser }}</td>
+													</tr>
+												{% endfor %}
 											</tbody>
 										</table>
 									</div>
