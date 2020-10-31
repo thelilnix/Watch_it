@@ -96,7 +96,7 @@ def home():
         )
 
     return render_template(
-        "Home_template/index.html",
+        "Home/index.html",
         platform=user_platform,
         browser=user_browser,
         ip=user_ip,
@@ -105,7 +105,7 @@ def home():
 
 
 # This route is not secure. Change it.
-@app.route('/admin', methods=["GET", "POST"])
+@app.route('/login', methods=["GET", "POST"])
 @limiter.limit("6 per minute")
 def admin_login():
     if session.get("username", '') == PANEL_USERNAME:
@@ -114,7 +114,7 @@ def admin_login():
     else:
         if request.method == 'GET':
             # Show login template
-            return render_template("Login_template/index.html")
+            return render_template("Login/index.html")
         else:
             # The client entered the username and password
             username = request.form['username']
@@ -137,17 +137,17 @@ def dashboard():
 
 @app.errorhandler(404)
 def error_404(err):
-    return render_template("Error_template/404.html"), 404
+    return render_template("Error/404.html"), 404
 
 
 @app.errorhandler(403)
 def error_403(err):
-    return render_template("Error_template/403.html"), 403
+    return render_template("Error/403.html"), 403
 
 
 @app.errorhandler(429)
 def error_429(err):
-    return render_template("Error_template/429.html"), 429
+    return render_template("Error/429.html"), 429
 
 
 if __name__ == "__main__":
