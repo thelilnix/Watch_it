@@ -2,6 +2,7 @@
 - [x] Logout
 - [ ] Hash PANEL_PASSWORD (and PANEL_USERNAME) (sha256). (Line 123 app.py)
 - [ ] Pylint
-- [ ] MVC
+- [x] MVC
+- [ ] Docstrings and comments
 - [ ] Complete `README.md`
 - [ ] Write test for the app

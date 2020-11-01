@@ -39,6 +39,8 @@ limiter = Limiter(
 )
 
 
+# Models
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     platform = db.Column(db.String(15))
@@ -58,6 +60,8 @@ class User(db.Model):
 
 db.create_all()
 
+
+# Views / Controllers
 
 @app.before_first_request
 def before_first_req():
