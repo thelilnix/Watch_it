@@ -161,6 +161,12 @@ def dashboard():
         return redirect(url_for("admin_login"))
 
 
+@app.route("/logout")
+def admin_logout():
+    session.pop("username")
+    return redirect(url_for("admin_login"))
+
+
 @app.errorhandler(404)
 def error_404(err):
     return render_template("Error/404.html"), 404
