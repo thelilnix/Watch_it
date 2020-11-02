@@ -81,7 +81,7 @@ def home():
             requests.get(f"http://ip-api.com/json/{user_ip}").text
         )
 
-        user_country = info['country']
+        user_country = info['countryCode']
     except Exception:
         user_country = "Unknown"
 

@@ -378,5 +378,55 @@
 <script src="{{ url_for('static', filename='Dashboard/js/plugin/chart-circle/circles.min.js') }}"></script>
 <script src="{{ url_for('static', filename='Dashboard/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 <script src="{{ url_for('static', filename='Dashboard/js/ready.min.js') }}"></script>
-<script src="{{ url_for('static', filename='Dashboard/js/demo.js') }}"></script>
+<script>
+		$(".mapcontainer").mapael({
+			map : {
+				name : "world_countries",
+				zoom: {
+					enabled: true,
+					maxLevel: 10
+				},
+				defaultPlot: {
+					attrs: {
+						fill: "#004a9b"
+						, opacity: 0.6
+					}
+				}, 
+				defaultArea: {
+					attrs: {
+						fill: "#e4e4e4"
+						, stroke: "#fafafa"
+					}
+					, attrsHover: {
+						fill: "#59d05d"
+					}
+					, text: {
+						attrs: {
+							fill: "#505444"
+						}
+						, attrsHover: {
+							fill: "#000"
+						}
+					}
+				}
+			},
+			areas: {
+						// "department-56": {
+						// 	text: {content: "Morbihan", attrs: {"font-size": 10}},
+						// 	tooltip: {content: "<b>Morbihan</b> <br /> Bretagne"}
+						// },
+						{% for user in latest_users %}
+							"{{ user.country }}": {
+								tooltip: {content: "<b>{{ user.country }}</b>"},
+								attrs: {
+									fill: "#59d05d"
+								}
+								, attrsHover: {
+									fill: "#59d05d"
+								}
+							},
+						{% endfor %}
+					},
+		});
+	</script>
 </html>
