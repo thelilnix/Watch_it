@@ -99,7 +99,7 @@ def home():
             requests.get(f"http://ip-api.com/json/{user_ip}").text
         )
 
-        user_country = info['countryCode']
+        user_country = info['countryCode']  # Like: AU, US, UK, etc.
     except Exception:
         user_country = "Unknown"
 
@@ -128,7 +128,7 @@ def home():
 
 # This route is not secure. Change it.
 @app.route('/login', methods=["GET", "POST"])
-@limiter.limit("6 per minute")
+@limiter.limit("6 per minute")  # For brute force
 def admin_login():
     """
     The admin login page.
@@ -192,7 +192,7 @@ def dashboard():
             latest_users=latest_users,
         )
     else:
-        # Redirect to login page
+        # Redirect to the login page
         return redirect(url_for("admin_login"))
 
 
