@@ -1,3 +1,7 @@
+"""
+Watch_it
+Watch your users while they're watching a clock.
+"""
 import os
 import requests
 import json
@@ -42,6 +46,10 @@ limiter = Limiter(
 # Models
 
 class User(db.Model):
+    """
+    This class is for ORM (User table)
+    """
+
     id = db.Column(db.Integer, primary_key=True)
     platform = db.Column(db.String(15))
     browser = db.Column(db.String(15))
@@ -49,6 +57,8 @@ class User(db.Model):
     country = db.Column(db.String(40))
 
     def __init__(self, platform, browser, ip, country):
+        """__init__"""
+
         self.platform = platform
         self.browser = browser
         self.ip = ip
@@ -65,11 +75,19 @@ db.create_all()
 
 @app.before_first_request
 def before_first_req():
+    """
+    Begore first request function.
+    """
     session.permanent = True
 
 
 @app.route("/")
 def home():
+    """
+    The home page.
+    This function inserts the client information
+    and renders `templates/Home/index.html`.
+    """
 
     user_platform = request.user_agent.platform
     user_browser = request.user_agent.browser
@@ -112,6 +130,13 @@ def home():
 @app.route('/login', methods=["GET", "POST"])
 @limiter.limit("6 per minute")
 def admin_login():
+    """
+    The admin login page.
+    This function sets a new session for admin `templates/Login/index.html`
+    and redirects to `dashboard`.
+    Also `abort(403)` for wrong username or password.
+    """
+
     if session.get("username", '') == PANEL_USERNAME:
         # The client logged in before
         return redirect(url_for('dashboard'))
@@ -136,6 +161,12 @@ def admin_login():
 
 @app.route('/dashboard')
 def dashboard():
+    """
+    The dashboard.
+    This function renders `templates/Dashboard/index.html`
+    and redirects to `admin_login`(means there's no session).
+    """
+
     if session.get("username", '') == PANEL_USERNAME:
         # The client logged in
 
@@ -167,22 +198,35 @@ def dashboard():
 
 @app.route("/logout")
 def admin_logout():
+    """
+    This function pops the session and redirects you to `admin_login`.
+    """
+
     session.pop("username")
     return redirect(url_for("admin_login"))
 
 
 @app.errorhandler(404)
 def error_404(err):
+    """
+    Renders `templates/Error/404.html` for Not found error.
+    """
     return render_template("Error/404.html"), 404
 
 
 @app.errorhandler(403)
 def error_403(err):
+    """
+    Redners `templates/Error/403.html` for Forbidden error.
+    """
     return render_template("Error/403.html"), 403
 
 
 @app.errorhandler(429)
 def error_429(err):
+    """
+    Renders `templates/Error/429.html` for Too many requests error.
+    """
     return render_template("Error/429.html"), 429
 
 
