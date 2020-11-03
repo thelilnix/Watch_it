@@ -3,20 +3,12 @@ Watch_it
 Watch your users while they're watching a clock.
 """
 import os
-import requests
 import json
 from datetime import timedelta
+import requests
 from flask_sqlalchemy import SQLAlchemy
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from db_config import (
-    MYSQL_HOST,
-    MYSQL_USER,
-    MYSQL_PASSWORD,
-    DB_NAME,
-    PANEL_USERNAME,
-    PANEL_PASSWORD,
-)
 from flask import (
     Flask,
     render_template,
@@ -25,6 +17,14 @@ from flask import (
     abort,
     redirect,
     url_for,
+)
+from db_config import (
+    MYSQL_HOST,
+    MYSQL_USER,
+    MYSQL_PASSWORD,
+    DB_NAME,
+    PANEL_USERNAME,
+    PANEL_PASSWORD,
 )
 
 
@@ -139,24 +139,23 @@ def admin_login():
 
     if session.get("username", '') == PANEL_USERNAME:
         # The client logged in before
-        return redirect(url_for('dashboard'))
-    else:
-        if request.method == 'GET':
-            # Show login template
-            return render_template("Login/index.html")
-        else:
-            # The client entered the username and password
-            username = request.form['username']
-            password = request.form['password']
+        return redirect(url_for('dashboard'))  # THE END OF THE FUNCTION
 
-            # TODO: Hash PANEL_PASSWORD (and PANEL_USERNAME) (sha256).
-            if username == PANEL_USERNAME and password == PANEL_PASSWORD:
-                # Username and password is correct.
-                session["username"] = username
-                return redirect(url_for("dashboard"))
-            else:
-                # Unauthorized
-                return abort(403)
+    if request.method == 'GET':
+        # Show login template
+        return render_template("Login/index.html")  # THE END OF THE FUNCTION
+
+    # The client entered the username and password
+    username = request.form['username']
+    password = request.form['password']
+
+    if username == PANEL_USERNAME and password == PANEL_PASSWORD:
+        # Username and password is correct.
+        session["username"] = username
+        return redirect(url_for("dashboard"))  # THE END OF THE FUNCTION
+
+    # Unauthorized
+    return abort(403)
 
 
 @app.route('/dashboard')
@@ -190,10 +189,10 @@ def dashboard():
             opera=opera_users_count,
             other=other_users_count,
             latest_users=latest_users,
-        )
-    else:
-        # Redirect to the login page
-        return redirect(url_for("admin_login"))
+        )  # THE END OF THE FUNCTION
+
+    # Redirect to the login page
+    return redirect(url_for("admin_login"))
 
 
 @app.route("/logout")
