@@ -201,7 +201,9 @@ def admin_logout():
     This function pops the session and redirects you to `admin_login`.
     """
 
-    session.pop("username")
+    if session.get('username', '') != '':
+        session.pop("username")
+
     return redirect(url_for("admin_login"))
 
 
