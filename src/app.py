@@ -145,9 +145,12 @@ def admin_login():
         # Show login template
         return render_template("Login/index.html")  # THE END OF THE FUNCTION
 
-    # The client entered the username and password
-    username = request.form['username']
-    password = request.form['password']
+    try:
+        # The client entered the username and password
+        username = request.form['username']
+        password = request.form['password']
+    except Exception:
+        return abort(400)
 
     if username == PANEL_USERNAME and password == PANEL_PASSWORD:
         # Username and password is correct.
