@@ -89,33 +89,35 @@ def home():
     and renders `templates/Home/index.html`.
     """
 
+    user_ip = request.remote_addr
     user_platform = request.user_agent.platform
     user_browser = request.user_agent.browser
-    user_ip = request.remote_addr
-    user_country = ""
+    user_country = "Unknown"
 
-    try:
-        info = json.loads(
-            requests.get(f"http://ip-api.com/json/{user_ip}").text
-        )
+    if user_ip != '127.0.0.1':  # Localhost
 
-        user_country = info['countryCode']  # Like: AU, US, UK, etc.
-    except Exception:
-        user_country = "Unknown"
+        try:
+            info = json.loads(
+                requests.get(f"http://ip-api.com/json/{user_ip}").text
+            )
 
-    try:
-        new_user = User(user_platform, user_browser, user_ip, user_country)
+            user_country = info['countryCode']  # Like: AU, US, UK, etc.
+        except Exception as err:
+            print(f"ERROR (country code)=> {err}")
 
-        db.session.add(new_user)
-        db.session.commit()
-    except Exception as err:
-        print(
-            f"""
-            Inserting failed...
-            ({user_platform}, {user_browser}, {user_ip}, {user_country}).
-            Error =>\n{err}
-            """
-        )
+        try:
+            new_user = User(user_platform, user_browser, user_ip, user_country)
+
+            db.session.add(new_user)
+            db.session.commit()
+        except Exception as err:
+            print(
+                f"""
+                Inserting failed...
+                ({user_platform}, {user_browser}, {user_ip}, {user_country}).
+                Error =>\n{err}
+                """
+            )
 
     return render_template(
         "Home/index.html",
