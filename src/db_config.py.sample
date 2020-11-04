@@ -1,8 +1,8 @@
-MYSQL_HOST = "Your mysql server IP"
-MYSQL_USER = "Your mysql username"
-MYSQL_PASSWORD = "Your mysql password"
+MYSQL_HOST = "127.0.0.1"  # CHANGE IT to your MySQL server IP
+MYSQL_USER = "watchit"  # CHANGE IT to your MySQL username
+MYSQL_PASSWORD = "$watchitpassword$"  # CHANGE IT to your MySQL password
 DB_NAME = "Watch_it"
 
 # Admin panel
-PANEL_USERNAME = "Your admin username"
-PANEL_PASSWORD = "Your admin password"
+PANEL_USERNAME = "USERNAME"  # CHANGE IT to your personal username
+PANEL_PASSWORD = "PASSWORD"  # CHANGE IT to your personal password
