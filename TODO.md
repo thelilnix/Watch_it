@@ -3,6 +3,7 @@
 - [x] Pylint
 - [x] MVC
 - [x] Docstrings and comments
-- [ ] Write test for the app
+- [x] Write test for the app
+- [ ] Package
 - [ ] Complete `README.md`
 - [ ] Hash PANEL_PASSWORD (and PANEL_USERNAME) (sha256). (Line 123 app.py)
