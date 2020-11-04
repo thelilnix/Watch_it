@@ -128,7 +128,7 @@ def home():
 
 # This route is not secure. Change it.
 @app.route('/login', methods=["GET", "POST"])
-@limiter.limit("6 per minute")  # For brute force
+@limiter.limit("15 per 2 minutes")  # For brute force
 def admin_login():
     """
     The admin login page.
