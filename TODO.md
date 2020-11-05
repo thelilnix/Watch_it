@@ -5,7 +5,7 @@
 - [x] Docstrings and comments
 - [x] Write test for the app
 - [x] Package
-- [ ] runner.sh
+- [x] run.sh
 - [ ] configure.sh
 - [ ] Complete `README.md`
 - [ ] Hash PANEL_PASSWORD (and PANEL_USERNAME) (sha256). (Line 123 app.py)
