@@ -7,5 +7,5 @@
 - [x] Package
 - [x] run.sh
 - [x] configure.sh
-- [ ] Complete `README.md`
+- [x] Complete `README.md`
 - [ ] Hash PANEL_PASSWORD (and PANEL_USERNAME) (sha256). (Line 123 app.py)
