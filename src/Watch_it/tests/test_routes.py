@@ -1,4 +1,4 @@
-from db_config import (
+from Watch_it.db_config import (
     PANEL_USERNAME,
     PANEL_PASSWORD,
 )

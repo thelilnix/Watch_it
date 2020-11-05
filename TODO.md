@@ -4,7 +4,7 @@
 - [x] MVC
 - [x] Docstrings and comments
 - [x] Write test for the app
-- [ ] Package
+- [x] Package
 - [ ] runner.sh
 - [ ] configure.sh
 - [ ] Complete `README.md`

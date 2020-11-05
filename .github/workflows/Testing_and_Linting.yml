@@ -53,13 +53,13 @@ jobs:
 
       - name: Creating db_config
         run: |
-          cp src/db_config.py.sample src/db_config.py
+          cp src/Watch_it/db_config.py.sample src/Watch_it/db_config.py
 
-      - name: Testing the App
+      - name: Testing using Pytest
         run: |
           cd src/;python -m pytest
 
       - name: Linting using pylint
         run: |
-          pylint --load-plugins pylint_flask_sqlalchemy src/app.py || pylint-exit $?
+          pylint --load-plugins pylint_flask_sqlalchemy src/Watch_it/__init__.py || pylint-exit $?
 

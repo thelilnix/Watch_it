@@ -1,5 +1,7 @@
 import pytest
-from app import app as flask_app
+from Watch_it import app as flask_app
+
+# Change directory to `src/` then run `python -m pytest`
 
 
 @pytest.fixture

@@ -1,16 +1,9 @@
-"""
-Watch_it
-Watch your users while they're watching a clock.
-"""
-import os
+from Watch_it import app, db
 import json
-from datetime import timedelta
 import requests
-from flask_sqlalchemy import SQLAlchemy
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask import (
-    Flask,
     render_template,
     request,
     session,
@@ -18,67 +11,16 @@ from flask import (
     redirect,
     url_for,
 )
-from db_config import (
-    MYSQL_HOST,
-    MYSQL_USER,
-    MYSQL_PASSWORD,
-    DB_NAME,
+from Watch_it.models import User
+from Watch_it.db_config import (
     PANEL_USERNAME,
     PANEL_PASSWORD,
 )
-
-
-app = Flask(__name__)
-app.secret_key = os.urandom(24)
-app.permanent_session_lifetime = timedelta(days=5)
-
-uri = f'mysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{DB_NAME}'
-app.config["SQLALCHEMY_DATABASE_URI"] = uri
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app)
 
 limiter = Limiter(
     app,
     key_func=get_remote_address,
 )
-
-
-# Models
-
-class User(db.Model):
-    """
-    This class is for ORM (User table)
-    """
-
-    id = db.Column(db.Integer, primary_key=True)
-    platform = db.Column(db.String(15))
-    browser = db.Column(db.String(15))
-    ip = db.Column(db.String(15))
-    country = db.Column(db.String(40))
-
-    def __init__(self, platform, browser, ip, country):
-        """__init__"""
-
-        self.platform = platform
-        self.browser = browser
-        self.ip = ip
-        self.country = country
-
-    def __repr__(self):
-        return '<User %s>' % self.ip
-
-
-db.create_all()
-
-
-# Views / Controllers
-
-@app.before_first_request
-def before_first_req():
-    """
-    Begore first request function.
-    """
-    session.permanent = True
 
 
 @app.route("/")
@@ -234,7 +176,3 @@ def error_429(err):
     Renders `templates/Error/429.html` for Too many requests error.
     """
     return render_template("Error/429.html"), 429
-
-
-if __name__ == "__main__":
-    app.run("0.0.0.0", 5000, debug=False)
