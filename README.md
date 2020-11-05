@@ -4,6 +4,7 @@ Watch your users while they're watching a clock.
 [![Test_Lint](https://github.com/ebsa491/Watch_it/workflows/Testing%20and%20Linting/badge.svg)](https://github.com/ebsa491/Watch_it/actions)
 [![Python: 3.8](https://img.shields.io/badge/Python-3.8-blue)](https://www.python.org/)
 [![License: GPL](https://img.shields.io/badge/License-GPL--3.0-red)](https://www.gnu.org/licenses/gpl-3.0)
+[![Release](https://img.shields.io/github/v/release/ebsa491/Watch_it)](https://github.com/ebsa491/Watch_it/releases)
 ![Last commit](https://img.shields.io/github/last-commit/ebsa491/Watch_it)
 [![Follow me](https://img.shields.io/github/followers/ebsa491?label=Follow%20me&style=social)](https://github.com/ebsa491)
 
@@ -44,7 +45,7 @@ Shell:
 For running the app just run
 
 ```shell
-(ROOT_PROJECT_DIR)$ ./run.sh
+(ROOT_PROJECT_DIR)$ ./run.sh # /login for Admin panel.
 ```
 
 or
