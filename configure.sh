@@ -2,7 +2,7 @@
 
 echo -n "Enter your MySQL server IP> "
 read ip
-echo -n "Enter your MySQL username(non-root recommened)> "
+echo -n "Enter your MySQL username(non-root recommended)> "
 read username
 echo -n "Enter your MySQL password> "
 read password
