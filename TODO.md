@@ -6,6 +6,6 @@
 - [x] Write test for the app
 - [x] Package
 - [x] run.sh
-- [ ] configure.sh
+- [x] configure.sh
 - [ ] Complete `README.md`
 - [ ] Hash PANEL_PASSWORD (and PANEL_USERNAME) (sha256). (Line 123 app.py)
