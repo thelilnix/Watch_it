@@ -23,4 +23,4 @@ PANEL_USERNAME = \"$panel_username\"
 PANEL_PASSWORD = \"$panel_password\"
 " > src/Watch_it/db_config.py
 
-echo -e "[\033[1;32m+\033[0m] DONE! Now just run './run.sh'"
+echo -e "[\033[1;32m+\033[0m] DONE! Now run your mysql server then './run.sh'"
