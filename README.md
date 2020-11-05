@@ -10,8 +10,8 @@ Watch your users while they're watching a clock.
 ![Screenshot](./screenshot.png)
 
 ## Table of contents
+* [Requirements/Credit](#requirements)
 * [Setup](#setup)
-* [Technologies or Requirements](#requirements)
 * [Run](#run)
 * [Contributing](#contributing)
 * [Bug Reporting](#bug-reporting)
@@ -56,11 +56,11 @@ or
 
 ## Contributing
 
-I will be glad! Just open an issue or work on your assigned issue.
+I will be glad! Open an issue first or work on your assigned issue.
 
 ## Bug Reporting
 If you have found any important bug or vulnerability,
-contact me please.
+open an issue and contact me please.
 
 email: ebsa491@gmail.com
 ## TODO
