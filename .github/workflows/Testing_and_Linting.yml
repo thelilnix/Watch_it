@@ -55,7 +55,7 @@ jobs:
         run: |
           cp src/Watch_it/db_config.py.sample src/Watch_it/db_config.py
 
-      - name: Testing using Pytest
+      - name: Testing using pytest
         run: |
           cd src/;python -m pytest
 
