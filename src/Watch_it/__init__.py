@@ -45,4 +45,4 @@ def before_first_req():
 
 
 if __name__ == "__main__":
-    app.run("0.0.0.0", 5000, debug=False)
+    app.run("0.0.0.0", 80, debug=False)
