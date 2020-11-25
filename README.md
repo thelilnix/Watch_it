@@ -33,16 +33,12 @@ Templates credit:
 
 ## Setup
 
-Shell:
-
 ```shell
 (ROOT_PROJECT_DIR)$ pip3 install -r requirements.txt # You can use virtual env too.
 (ROOT_PROJECT_DIR)$ ./configure.sh
 ```
 
 ## Run
-
-For running the app just run
 
 ```shell
 (ROOT_PROJECT_DIR)$ ./run.sh # /login for Admin panel.
